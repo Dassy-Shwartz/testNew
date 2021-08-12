@@ -23,11 +23,11 @@
     /* text-overflow: ellipsis; */
     /* overflow: hidden; */
     white-space: initial;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     border: 1px solid #E7E7E7;
   }
-  .contTable{
+.contTable{
       position: relative;
       padding-right: 40px;
       padding-top: 40px;

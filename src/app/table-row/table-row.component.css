@@ -20,7 +20,7 @@ table {
   /* .container{height: 100%;} */
   .tbody{
     overflow-y: auto;
-    height: calc(100% - 100px);
+    height:500px;
   }
   th.mat-sort-header-sorted {
     color: black;

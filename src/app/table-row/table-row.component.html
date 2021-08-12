@@ -69,9 +69,9 @@
             <input [style.width.px]=50 [(ngModel)]="filterObj[h]" matInput (change)="filter_data()">
         </mat-form-field>
     </div></div>
-    <div class="tbody">
-        <div class="row_flex" *ngFor="let cur of this.allData_fiter">
+    <div #bodtTbl class="tbody"[innerHtml]="htmlToAdd">
+        <!-- <div class="row_flex" *ngFor="let cur of this.allData_fiter">
             <div class="col_flex" *ngFor="let a of cur"><div>{{a}}</div></div>
-        </div>
+        </div> -->
     </div>
 </div>

@@ -1,5 +1,5 @@
-<!-- <mat-progress-bar *ngIf="progress_==1" mode="indeterminate"></mat-progress-bar> -->
-<!-- <div *ngIf="progress_==1" class="numC">{{'נבדקו'+numCheck +' מתוך'+(data.length)}}</div>[ngClass]="{progressClass:progress_==1}" -->
+<mat-progress-bar *ngIf="progress_==1" mode="indeterminate"></mat-progress-bar>
+<!-- <div [ngClass]="{progressClass:progress_==1,numC:true}"  *ngIf="progress_==1">{{'נבדקו'+numCheck +' מתוך'+(data.length)}}</div> -->
 <div style="padding :5%;border-right:1px solid  var(--bs-blue);">
   <!-- <div class="row"> -->
   <div *ngIf="!(data.length>0)">
@@ -25,7 +25,7 @@
   <!-- </div> -->
   <div *ngIf="(data.length>0)" class="row" style="width: 100%;">
     <div style="width: 70%;">
-      <app-table-row [allData]="data_" [header]="headers" (arrData)="refreshData($event)"></app-table-row>
+      <app-table-row [header]="headers" [allData]="data_" (arrData)="refreshData($event)"></app-table-row>
       <button (click)="export()" class="exel_btn"></button>
     </div>
     <div style="width: 30%;">

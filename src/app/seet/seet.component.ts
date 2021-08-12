@@ -16,7 +16,7 @@ export class SeetComponent implements OnInit {
 
   ngOnInit(): void {
   }
-    // progress_: number =0;
+    progress_: number =0;
   data_: AOA = []; // [[1, 2], [3, 4]];
   data: AOA = []; // [[1, 2], [3, 4]];
   // [[1, 2], [3, 4]];
@@ -27,12 +27,10 @@ export class SeetComponent implements OnInit {
   // @Output() arrData_display = new EventEmitter();
   refreshData(arrData:any) {debugger
     this.curData =arrData;
-    // this.curData['header']=this.headers;
-    console.log(arrData);
-    // this.arrData_display.emit(this.curData);
+   
   }
   onFileChange(evt: any) {
-    // this.progress_=1;
+    this.progress_=1;
     /* wire up file reader */
     const target: DataTransfer = <DataTransfer>(evt.target);
     if (target.files.length !== 1) throw new Error('Cannot use multiple files');
@@ -51,54 +49,62 @@ export class SeetComponent implements OnInit {
       this.headers = this.data[0];
       this.headers.push('myTest');
       this.data.splice(0, 1)
-      console.log(this.headers);
-      console.log(this.data);
+      // console.log(this.headers);
+      // console.log(this.data);
       this.checkData();
 
-      console.log(this.headers);
-      console.log(this.data);
+      // console.log(this.headers);
+      // console.log(this.data);
     };
     reader.readAsBinaryString(target.files[0]);
   }
 
   checkData() {
-    // this.progress_=0;
+    
     // this.ref.detectChanges();
     // this.numCheck=0;
-    debugger
+    debugger;
+    var data_on: AOA = [];
     var num_RefRelevant = 0, num_TitleRelevant = 0;
     var num_error = 0, num_valid = 0;
     var ref_index = this.headers.indexOf('ref');
     var title_index = this.headers.indexOf('title');
     var isTitleRefRelevant_index = this.headers.indexOf('isTitleRefRelevant');
     var IsTitleRelevant_index = this.headers.indexOf('IsTitleRelevant');
-    this.data.forEach(element => {
-      // this.numCheck++;this.ref.detectChanges();
-      if(element.length){
-      var a =Object.assign([], element)
+    // this.data.forEach(element => {
+      for (let i = 0; i < this.data.length; i++) {
+        var  element = this.data[i];
+        
       
+      // this.numCheck++;this.ref.detectChanges();
+      if(!element.length){
+    break;
+      }
+        var a =Object.assign([], element)
       let noCheck = false;//דגל כשלא רלוונטי
       //ref לא רלוונטי
       if (+element[isTitleRefRelevant_index] == 0) {
         noCheck = true; num_RefRelevant++;
         element.push(undefined);
-        a.push(undefined); this.data_.push(a);
+        a.push(undefined); 
+        data_on.push(a);
       }
       //title לא רלוונטי
       if (+element[IsTitleRelevant_index] == 0) {
         noCheck = true; num_TitleRelevant++;  element.push(undefined);
         a.push(undefined);
-        this.data_.push(a);
+        data_on.push(a);
       }
       if (noCheck)
-        return;
+        continue;
       //אם אחד מכיל את המילה חוק ואחד לפקודת
       if ((element[title_index].indexOf('פקוד') != -1 && element[ref_index].indexOf('חוק') != -1) ||
         (element[title_index].indexOf('חוק') != -1 && element[ref_index].indexOf('פקוד') != -1)) {
         num_error++;
         element.push("0");
-        a.push("0"); this.data_.push(a);
-        return;
+        a.push("0"); 
+        data_on.push(a);
+        continue;
       }
       //       //אם אחד מכיל את המילה חוק
       //       if ((element[title_index].indexOf('חוק') == -1 && element[ref_index].indexOf('חוק') != -1) || 
@@ -182,8 +188,8 @@ export class SeetComponent implements OnInit {
           //חותכת את הסוף
           num_title_e != -1 ? subString_title = subString_title.substring(0, num_title_e) : '';
           num_ref_e != -1 ? subString_ref = subString_ref.substring(0, num_ref_e) : '';
-          console.log(subString_title);
-          console.log(subString_ref);
+          // console.log(subString_title);
+          // console.log(subString_ref);
           //אם תקין
           if ((!subString_title.length && !subString_ref.length) || (subString_title.length && subString_ref.length && subString_title == subString_ref)) {
 
@@ -194,7 +200,8 @@ export class SeetComponent implements OnInit {
             a.push("0")
             element.push("0");
             num_error++;
-            this.data_.push(a); return;
+            data_on.push(a); 
+            continue;
           }
         }
         // else {
@@ -207,9 +214,10 @@ export class SeetComponent implements OnInit {
       a.push("1")
       element.push("1");
       num_valid++;
-      this.data_.push(a);
-    }
-    });
+      data_on.push(a);
+    
+    };this.progress_=0;
+    this.data_=data_on;this.ref.detectChanges();
     this.refreshData(this.data_);
     
   }
