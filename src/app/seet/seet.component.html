@@ -1,0 +1,36 @@
+<!-- <mat-progress-bar *ngIf="progress_==1" mode="indeterminate"></mat-progress-bar> -->
+<!-- <div *ngIf="progress_==1" class="numC">{{'נבדקו'+numCheck +' מתוך'+(data.length)}}</div>[ngClass]="{progressClass:progress_==1}" -->
+<div style="padding :5%;border-right:1px solid  var(--bs-blue);">
+  <!-- <div class="row"> -->
+  <div *ngIf="!(data.length>0)">
+    <div class="ddd">
+      <div class="row">
+        1. טען קובץ Exelהמתאים לפורמט </div>
+      <div class="row">
+        2. במסך הבא צפה בנתוני בדיקת המערכת ורמת דיוק הנתונים </div>
+      <div class="row">
+        ניתן לחפש בשני אופנים:
+        - חיפוש כללי
+        - חיפוש לפי עמודה ספציפית
+      </div>
+      <div class="row">3. ניתן להוריד את תוצאות הבדיקה</div>
+
+    </div>
+    <button (click)="fileInput.click()">
+      <mat-icon>library_add</mat-icon>
+      <span>בחר קובץ</span>
+      <input #fileInput type="file" (change)="onFileChange($event)" style="display:none;" />
+    </button>
+  </div>
+  <!-- </div> -->
+  <div *ngIf="(data.length>0)" class="row" style="width: 100%;">
+    <div style="width: 70%;">
+      <app-table-row [allData]="data_" [header]="headers" (arrData)="refreshData($event)"></app-table-row>
+      <button (click)="export()" class="exel_btn"></button>
+    </div>
+    <div style="width: 30%;">
+
+      <app-details [header]="headers" [data]="curData"></app-details>
+    </div>
+  </div>
+</div>

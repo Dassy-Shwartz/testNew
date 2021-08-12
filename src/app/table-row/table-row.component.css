@@ -1,0 +1,81 @@
+/* Structure */
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  *{
+      direction: rtl !important;
+      text-align: right !important;
+    }
+    *:not(mat-icon){
+         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+  table {
+    width: 100%;
+  }
+  /* .container{height: 100%;} */
+  .tbody{
+    overflow-y: auto;
+    height: calc(100% - 100px);
+  }
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+  .row_flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 32px;
+    border-bottom:  1px solid #e7e7e7;
+  }
+  .row_flex.withInput {
+    height: 50px !important;
+}
+
+.row_flex.withInput * {
+    width: 99% !important;
+    margin: 0 !important;
+}
+  .col_flex{
+    display: flex;
+    width: 100%;
+    line-height: 32px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .col_flex div{
+    width: 90%;    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .col_flex + .col_flex{
+    margin-left: 10px;
+  }
+  /*---------- scrollbar-------------- */
+  /* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(180, 177, 177); 
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(226, 223, 223); 
+}

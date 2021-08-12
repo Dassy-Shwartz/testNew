@@ -1,0 +1,35 @@
+<div class="title_">מטריצת בלבול</div>
+<div class="contTable">
+<div class="row_flex">
+    <div class="col_flex">{{'מס רשומות '+details.count}}</div>
+    <div class="col_flex">שגוי</div>
+    <div class="col_flex"> תקין</div>
+    <div class="col_flex">לא נבדק</div>
+</div>
+<div class="row_flex">
+    <div class="col_flex">  שגוי</div>
+    
+    <div class="col_flex">{{details.err_err}}</div>
+    <div class="col_flex">{{details.valid_err}}</div>
+    <div class="col_flex">{{details.no_err}}</div>
+</div>
+<div class="row_flex">
+    <div class="col_flex">  תקין</div>
+    <div class="col_flex">{{details.err_valid}}</div>
+    <div class="col_flex">{{details.valid_valid}}</div>
+    <div class="col_flex">{{details.no_valid}}</div>
+   
+</div>
+<div class="row_flex">
+    <div class="col_flex"> לא נבדק</div>
+    <div class="col_flex">{{details.err_no}}</div>
+    <div class="col_flex">{{details.valid_no}}</div>
+    <div class="col_flex">{{details.no_no}}</div>   
+</div>
+</div>
+
+<div class="title_">{{'רמת דיוק- '+(((details.no_no+details.valid_valid+details.err_err)/details.count)*100+'%')}}</div>
+<mat-slider thumbLabel disabled="true" title="{{((details.no_no+details.valid_valid+details.err_err)/details.count)*100+'%'}}" tickInterval="{{details.no_no+details.valid_valid+details.err_err}}" 
+    min="0" max="{{details.count}}"></mat-slider>
+   
+<!-- [displayWith]="formatLabel" -->

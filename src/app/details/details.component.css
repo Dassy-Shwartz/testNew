@@ -1,0 +1,59 @@
+*:not(mat-grid-list){
+    direction: rtl !important;
+    text-align: right !important;
+   
+}
+*:not(mat-icon){
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.row_flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    min-height: 32px;
+  }
+ 
+  .col_flex{
+    display: flex;
+    width: 100%;
+    line-height: 32px;
+    padding: 5px;
+    text-align: center !important;
+    /* text-overflow: ellipsis; */
+    /* overflow: hidden; */
+    white-space: initial;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid #E7E7E7;
+  }
+  .contTable{
+      position: relative;
+      padding-right: 40px;
+      padding-top: 40px;
+  }
+  .contTable:after {content: 'נתון';
+    position: absolute;top: 0;
+    text-align: center !important;   color: var(--bs-blue);
+    width: calc(100% - 40px);
+    border-bottom: 1px solid #E7E7e7;}
+
+
+.contTable:before {content: 'מערכת';
+    position: absolute;right: 0;   color: var(--bs-blue);
+    text-align: center !important;height: calc(100% - 40px);
+    writing-mode: vertical-rl;text-orientation: mixed;
+    /* text-decoration: underline; */
+    border-left: 1px solid #E7E7e7;}
+    div.title_ {
+        margin-top: 40px;margin-bottom: 20px;
+        width: 100%;
+        color: var(--bs-blue);
+        border-bottom: 2px solid;
+    }
+
+        mat-slider.mat-slider.mat-focus-indicator.mat-accent.mat-slider-disabled.mat-slider-has-ticks.mat-slider-horizontal.mat-slider-thumb-label-showing.mat-slider-min-value.mat-slider-hide-last-tick {
+         
+            width: 100%;
+        }
+ 
