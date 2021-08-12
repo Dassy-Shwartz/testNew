@@ -82,7 +82,7 @@ export class TableRowComponent implements OnInit {
         else {
           var index = this.header.indexOf(key);
 
-          this.allData_fiter = this.allData_fiter.filter((a: any) => (((typeof(a[index]) =='undefined' && val==' ')|| a[index].toString().includes(val))))
+          this.allData_fiter = this.allData_fiter.filter((a: any) => (((typeof(a[index]) =='undefined' && val==' ')|| (typeof(a[index]) !='undefined' && a[index].toString().includes(val)))))
         }
       }
 
